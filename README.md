@@ -31,7 +31,7 @@ require 'capistrano/copy_files'
 The `deploy:copy_files` task will run during `deploy:updating` in order to copy
 files and/or directories from previous release. This allows to speed up a
 deploy: for instance, you can copy a vendor directory where dependencies have
-been previously installed by Composer.
+been previously installed by a package manager such as Composer or NPM.
 
 ### Configuration
 
@@ -40,7 +40,7 @@ Configurable options, shown here with defaults:
 ```ruby
 set :copy_files, []
 set :copy_file_flags, ""
-set :copy_dir_flags, ""
+set :copy_dir_flags, "-R"
 ```
 
 ## Contributing
