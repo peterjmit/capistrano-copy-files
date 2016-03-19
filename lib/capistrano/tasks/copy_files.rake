@@ -2,12 +2,9 @@ namespace :deploy do
   task :copy_files do
     next unless any? :copy_files
     on roles :app do
-      last_release = capture(:ls, '-xr', releases_path).split.fetch(1, nil)
-      next unless last_release
-      last_release_path = releases_path.join(last_release)
-
+      next unless current_path
       fetch(:copy_files).each do |path|
-        source = last_release_path.join(path)
+        source = current_path.join(path)
         target = release_path.join(path)
 
         if test "[ -f #{source} ]"
