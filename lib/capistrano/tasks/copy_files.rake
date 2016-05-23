@@ -8,7 +8,7 @@ namespace :deploy do
 
       fetch(:copy_files).each do |path|
         source = last_release_path.join(path)
-        target = release_path.join(path)
+        target = release_path
 
         if test "[ -f #{source} ]"
           execute :cp, fetch(:copy_file_flags), source, target
